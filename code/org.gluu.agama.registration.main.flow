@@ -37,9 +37,11 @@ Repeat 6 times max
                               // if otp is null
                               When otp is null
                                    // log for unsuccessful Email delivery
-                                   Log "@info " Unable to deliver e-mail message
-                              // Call user registration service method to register a new user
-                              inum | E = Call userRegistrationService addNewUser userInput
+                                   Log "@info Unable to deliver e-mail message"
+                                   // Unable to deliver e-mail message
+                                   it_yxiqb = {success:false, error: "Unable to deliver e-mail message"}
+                                   Finish it_yxiqb
+                              Log "@ " __________
                               // If user registration success
                               When inum is not null
                                    // Show user creation log
@@ -76,5 +78,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_gfxwh = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_gfxwh
+it_mcfpv = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_mcfpv
