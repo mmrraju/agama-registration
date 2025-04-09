@@ -1508,7 +1508,7 @@
 				"previousNodeId": "whenNode-d5144b5d-740b-4d03-b59c-00290b41bdf2",
 				"branching": "continue",
 				"agamaData": {
-					"iterateOn": "3",
+					"iterateOn": "otp",
 					"iterateAs": "",
 					"iterateResult": "max",
 					"nodeColor": "",
