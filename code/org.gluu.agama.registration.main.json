@@ -1334,15 +1334,15 @@
 			"dragging": false
 		},
 		{
-			"id": "assignmentNode-47a9d8d7-acad-455b-813f-b4071bbd3da7",
-			"type": "assignmentNode",
+			"id": "logNode-6acaf84b-ab4d-475d-bc62-8dcee0dc0ed2",
+			"type": "logNode",
 			"position": {
 				"x": 1953.8760441618958,
 				"y": 1295.7268359130342
 			},
 			"data": {
-				"id": "assignmentNode-47a9d8d7-acad-455b-813f-b4071bbd3da7",
-				"type": "assignmentNode",
+				"id": "logNode-6acaf84b-ab4d-475d-bc62-8dcee0dc0ed2",
+				"type": "logNode",
 				"position": {
 					"x": 1953.8760441618958,
 					"y": 1295.7268359130342
@@ -1350,14 +1350,15 @@
 				"previousNodeId": "whenNode-d5144b5d-740b-4d03-b59c-00290b41bdf2",
 				"branching": "success",
 				"agamaData": {
-					"assignments": [],
-					"nodeIcon": "material-symbols:equal",
+					"logMessage": "Unable to deliver e-mail message",
+					"logLevel": "info",
+					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "log for unsuccessful Email delivery"
 				}
 			},
 			"measured": {
@@ -2006,10 +2007,10 @@
 			"targetHandle": "target_callNode-861000cb-79c2-4b41-b03e-70f383658cd7"
 		},
 		{
-			"id": "whenNode-d5144b5d-740b-4d03-b59c-00290b41bdf2-assignmentNode-47a9d8d7-acad-455b-813f-b4071bbd3da7",
+			"id": "whenNode-d5144b5d-740b-4d03-b59c-00290b41bdf2-logNode-6acaf84b-ab4d-475d-bc62-8dcee0dc0ed2",
 			"type": "default",
 			"source": "whenNode-d5144b5d-740b-4d03-b59c-00290b41bdf2",
-			"target": "assignmentNode-47a9d8d7-acad-455b-813f-b4071bbd3da7",
+			"target": "logNode-6acaf84b-ab4d-475d-bc62-8dcee0dc0ed2",
 			"labelBgPadding": [
 				8,
 				4
@@ -2026,8 +2027,8 @@
 		}
 	],
 	"viewport": {
-		"x": -2710.6445680547977,
-		"y": -1712.8003434892862,
+		"x": -2646.6445680547968,
+		"y": -1514.8003434892862,
 		"zoom": 1.6021397551792458
 	}
 }
