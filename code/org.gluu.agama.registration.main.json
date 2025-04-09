@@ -1523,7 +1523,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -1547,7 +1547,7 @@
 						{
 							"variableTypeCheck": true,
 							"assignmentExpression": "\"OTP doesn't match\"",
-							"assignedVariableName": "emailObj.error"
+							"assignedVariableName": "emailObj.errorMessage"
 						}
 					],
 					"nodeIcon": "material-symbols:equal",
@@ -1563,7 +1563,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false,
+			"selected": true,
 			"dragging": false
 		}
 	],
