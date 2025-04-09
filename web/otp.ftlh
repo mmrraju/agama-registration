@@ -45,7 +45,30 @@
 	  </div>
 	</div>
   
-</body>
 
+</body>
+<style>
+	body {
+	  font-family: Arial, sans-serif;
+	  background-color: #f8f9fa;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh;
+	  margin: 0;
+	}
+	.required {
+	  color: red;
+	}
+	.error-message {
+	  color: red;
+	  font-size: 13px;
+	  margin-top: 5px;
+	}
+	.error{
+	  font-weight: bold;
+	  color: red;
+	}
+  </style>
 
 </html>
