@@ -59,6 +59,11 @@
 							"variableTypeCheck": false,
 							"assignmentExpression": "{}",
 							"assignedVariableName": "uiFeedback"
+						},
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "{}",
+							"assignedVariableName": "emailObj"
 						}
 					],
 					"nodeIcon": "material-symbols:equal",
@@ -74,7 +79,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false,
+			"selected": true,
 			"dragging": false
 		},
 		{
@@ -1521,7 +1526,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		}
 	],
@@ -2241,8 +2246,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1378.3891470437725,
-		"y": -456.84645572090267,
-		"zoom": 0.8235910172675737
+		"x": 1151,
+		"y": 312,
+		"zoom": 1
 	}
 }
