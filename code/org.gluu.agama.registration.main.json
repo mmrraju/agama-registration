@@ -1396,14 +1396,16 @@
 					"displayName": "",
 					"hasComment": true,
 					"comment": "OTP input form",
-					"arguments": "emailObj"
+					"arguments": [
+						"emailObj"
+					]
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "whenNode-58de2a40-f54d-4b0a-9b8c-6b2165b0340d",
@@ -1510,7 +1512,7 @@
 						{
 							"variableTypeCheck": true,
 							"assignmentExpression": "\"OTP doesn't match\"",
-							"assignedVariableName": "emailObj.errorMessage"
+							"assignedVariableName": "emailObj.error"
 						}
 					],
 					"nodeIcon": "material-symbols:equal",
@@ -1526,7 +1528,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false,
+			"selected": true,
 			"dragging": false
 		}
 	],
@@ -2246,8 +2248,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1259,
-		"y": -794,
-		"zoom": 1
+		"x": -2013.7991859034278,
+		"y": -988.1202455530752,
+		"zoom": 1.1809926614295305
 	}
 }
