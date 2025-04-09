@@ -435,7 +435,7 @@
 				"width": 110,
 				"height": 60
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -1483,6 +1483,46 @@
 				"height": 124
 			},
 			"selected": false
+		},
+		{
+			"id": "assignmentNode-53bad820-8e10-499a-b2f5-f7cae92e929d",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2178.560615392415,
+				"y": 909.0093585304546
+			},
+			"data": {
+				"id": "assignmentNode-53bad820-8e10-499a-b2f5-f7cae92e929d",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2358.261458282882,
+					"y": 918.7229176056151
+				},
+				"previousNodeId": "whenNode-58de2a40-f54d-4b0a-9b8c-6b2165b0340d",
+				"branching": "otherwise",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "\"OTP doesn't match\"",
+							"assignedVariableName": "uiFeedBack.errorMessage"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": "OTP does not match"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": true,
+			"dragging": false
 		}
 	],
 	"edges": [
@@ -2179,11 +2219,30 @@
 				"fillOpacity": 0.7
 			},
 			"id": "xy-edge__callNode-edd95521-1578-4cff-a03a-4bd7882f64cdsource_callNode-edd95521-1578-4cff-a03a-4bd7882f64cd-whenNode-51e74368-a147-4d88-a03f-76daebffff2ctarget_whenNode-51e74368-a147-4d88-a03f-76daebffff2c"
+		},
+		{
+			"id": "whenNode-58de2a40-f54d-4b0a-9b8c-6b2165b0340d-assignmentNode-53bad820-8e10-499a-b2f5-f7cae92e929d",
+			"type": "default",
+			"source": "whenNode-58de2a40-f54d-4b0a-9b8c-6b2165b0340d",
+			"target": "assignmentNode-53bad820-8e10-499a-b2f5-f7cae92e929d",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "otherwise",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-58de2a40-f54d-4b0a-9b8c-6b2165b0340d_otherwise"
 		}
 	],
 	"viewport": {
-		"x": -523.5365245276564,
-		"y": -186.33976982247316,
-		"zoom": 0.5000000000000009
+		"x": -1373.3891470437725,
+		"y": -526.8464557209026,
+		"zoom": 0.8235910172675737
 	}
 }
