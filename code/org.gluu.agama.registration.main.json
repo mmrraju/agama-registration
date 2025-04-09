@@ -399,8 +399,8 @@
 			"id": "callNode-861000cb-79c2-4b41-b03e-70f383658cd7",
 			"type": "callNode",
 			"position": {
-				"x": 1824,
-				"y": 678
+				"x": 2023.4426127694846,
+				"y": 922.0486223102648
 			},
 			"data": {
 				"id": "callNode-861000cb-79c2-4b41-b03e-70f383658cd7",
@@ -409,7 +409,7 @@
 					"x": 2280,
 					"y": 680
 				},
-				"previousNodeId": "whenNode-f6e375d5-6064-4609-89e8-b0943c226c08",
+				"previousNodeId": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
 				"agamaData": {
 					"javaClassName": "",
 					"javaMethodName": "addNewUser",
@@ -427,8 +427,7 @@
 					"hasComment": true,
 					"comment": "Call user registration service method to register a new user",
 					"asssignedVariableName": "inum"
-				},
-				"branching": "success"
+				}
 			},
 			"measured": {
 				"width": 170,
@@ -441,7 +440,7 @@
 			"id": "whenNode-51e74368-a147-4d88-a03f-76daebffff2c",
 			"type": "whenNode",
 			"position": {
-				"x": 2030,
+				"x": 2280,
 				"y": 680
 			},
 			"data": {
@@ -483,7 +482,7 @@
 			"id": "logNode-dfc16af5-4d1b-4bd5-88b8-36562fd3c788",
 			"type": "logNode",
 			"position": {
-				"x": 2280,
+				"x": 2530,
 				"y": 880
 			},
 			"data": {
@@ -517,7 +516,7 @@
 			"id": "logNode-2f6437c8-ca5d-4ed8-911f-2e1f106bc831",
 			"type": "logNode",
 			"position": {
-				"x": 2280,
+				"x": 2530,
 				"y": 430
 			},
 			"data": {
@@ -551,7 +550,7 @@
 			"id": "rrfNode-059b5072-b04c-45b8-9ad0-e7220a2e53d8",
 			"type": "rrfNode",
 			"position": {
-				"x": 2538,
+				"x": 2788,
 				"y": 877
 			},
 			"data": {
@@ -589,7 +588,7 @@
 			"id": "finishNode-782aa61d-c830-4605-8a09-95f9b81f264b",
 			"type": "finishNode",
 			"position": {
-				"x": 3038.9277959380106,
+				"x": 3288.9277959380106,
 				"y": 1071.7984140818535
 			},
 			"data": {
@@ -624,7 +623,7 @@
 			"id": "logNode-97b4346d-abae-4852-a5cd-ad05f1273f3c",
 			"type": "logNode",
 			"position": {
-				"x": 2787.1675710030086,
+				"x": 3037.1675710030086,
 				"y": 1068.9325960628946
 			},
 			"data": {
@@ -803,7 +802,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -892,8 +891,8 @@
 			"id": "logNode-cf757d75-ec10-456e-ada2-9736b843df04",
 			"type": "logNode",
 			"position": {
-				"x": 1865,
-				"y": 338
+				"x": 1629.6896915320465,
+				"y": 315.530050119771
 			},
 			"data": {
 				"id": "logNode-cf757d75-ec10-456e-ada2-9736b843df04",
@@ -1011,8 +1010,8 @@
 			"id": "assignmentNode-d8c56ab7-a159-4915-af18-bc30025ff928",
 			"type": "assignmentNode",
 			"position": {
-				"x": 2136,
-				"y": 237
+				"x": 1833.9040071658103,
+				"y": 227.63752088323793
 			},
 			"data": {
 				"id": "assignmentNode-d8c56ab7-a159-4915-af18-bc30025ff928",
@@ -1204,6 +1203,48 @@
 				"height": 124
 			},
 			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+			"type": "callNode",
+			"position": {
+				"x": 1759.0928633683397,
+				"y": 752.4359349650912
+			},
+			"data": {
+				"id": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+				"type": "callNode",
+				"position": {
+					"x": 1922,
+					"y": 798
+				},
+				"previousNodeId": "whenNode-f6e375d5-6064-4609-89e8-b0943c226c08",
+				"branching": "success",
+				"agamaData": {
+					"javaClassName": "",
+					"javaMethodName": "sendEmail",
+					"javaVariableName": "userRegistrationService",
+					"exceptionVariableField": "",
+					"callType": "Call method on instance",
+					"arguments": [
+						"email"
+					],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": "Send OTP to verify user mail",
+					"asssignedVariableName": "otp"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": true,
 			"dragging": false
 		},
 		{
@@ -1829,11 +1870,49 @@
 				"fillOpacity": 0.7
 			},
 			"id": "xy-edge__callNode-7836f867-adb4-4021-bdcb-93f6acf4547asource_callNode-7836f867-adb4-4021-bdcb-93f6acf4547a-whenNode-0b3db374-cf00-42bb-8819-bafa86adee9dtarget_whenNode-0b3db374-cf00-42bb-8819-bafa86adee9d"
+		},
+		{
+			"id": "whenNode-f6e375d5-6064-4609-89e8-b0943c226c08-callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+			"type": "default",
+			"source": "whenNode-f6e375d5-6064-4609-89e8-b0943c226c08",
+			"target": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-f6e375d5-6064-4609-89e8-b0943c226c08_success"
+		},
+		{
+			"id": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500-callNode-861000cb-79c2-4b41-b03e-70f383658cd7",
+			"type": "default",
+			"source": "callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+			"target": "callNode-861000cb-79c2-4b41-b03e-70f383658cd7",
+			"label": "",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"sourceHandle": "source_callNode-26d1efce-0fb6-408c-a55e-76ec442a2500",
+			"targetHandle": "target_callNode-861000cb-79c2-4b41-b03e-70f383658cd7"
 		}
 	],
 	"viewport": {
-		"x": -129.24368942582123,
-		"y": -86.9138296666074,
-		"zoom": 0.5904963307147653
+		"x": -2367.6445680547977,
+		"y": -967.8003434892861,
+		"zoom": 1.6021397551792458
 	}
 }
