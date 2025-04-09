@@ -34,6 +34,8 @@ Repeat 6 times max
                          When userWithUid.empty is true
                               // Send OTP to verify user mail
                               otp = Call userRegistrationService sendEmail email
+                              // if otp is null
+                              When otp is null
                               // Call user registration service method to register a new user
                               inum | E = Call userRegistrationService addNewUser userInput
                               // If user registration success
@@ -72,5 +74,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_bxfrw = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_bxfrw
+it_fcnzs = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_fcnzs
