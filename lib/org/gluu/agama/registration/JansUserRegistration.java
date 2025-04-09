@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.regex.Pattern;
 
+import org.gluu.agama.EmailTemplate;
+
+
 
 
 public class JansUserRegistration extends UserRegistration {
@@ -30,6 +33,9 @@ public class JansUserRegistration extends UserRegistration {
     private static final String EXT_ATTR = "jansExtUid";
     private static final String USER_STATUS = "jansStatus";
     private static final String EXT_UID_PREFIX = "github:";
+    private static final int OTP_LENGTH = 6;
+    private static final String SUBJECT_TEMPLATE = "Here's your verification code: %s";
+    private static final String MSG_TEMPLATE_TEXT = "%s is the code to complete your verification";   
     private static final SecureRandom RAND = new SecureRandom();
 
     private static JansUserRegistration INSTANCE = null;
@@ -117,7 +123,37 @@ public class JansUserRegistration extends UserRegistration {
     
         return new HashMap<>();
     }
-    
+
+    public String sendEmail(String to) {
+
+        SmtpConfiguration smtpConfiguration = getSmtpConfiguration();
+        IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
+        String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
+
+        String from = smtpConfiguration.getFromEmailAddress();
+        String subject = String.format(SUBJECT_TEMPLATE, otp);
+        String textBody = String.format(MSG_TEMPLATE_TEXT, otp);
+        String htmlBody = EmailTemplate.get(otp);
+
+        MailService mailService = CdiUtil.bean(MailService.class);
+
+        if (mailService.sendMailSigned(from, from, to, null, subject, textBody, htmlBody)) {
+            logger.debug("E-mail has been delivered to % with code %", to, otp);
+            return otp;
+        }
+        logger.debug("E-mail delivery failed, check jans-auth logs");
+        return null;
+
+    }
+
+    private SmtpConfiguration getSmtpConfiguration() {
+        ConfigurationService configurationService = CdiUtil.bean(ConfigurationService.class);
+        SmtpConfiguration smtpConfiguration = configurationService.getConfiguration().getSmtpConfiguration();
+        LogUtils.log("Your smtp configuration is %", smtpConfiguration);
+        return smtpConfiguration;
+
+    }     
+
 
     public String addNewUser(Map<String, String> profile) throws Exception {
         Set<String> attributes = Set.of("uid", "mail", "displayName","givenName", "sn", "userPassword");
