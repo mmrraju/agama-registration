@@ -39,8 +39,8 @@ Repeat 6 times max
                                    // log for unsuccessful Email delivery
                                    Log "@info Unable to deliver e-mail message"
                                    // Unable to deliver e-mail message
-                                   it_ihqkr = {success:false, error: "Unable to deliver e-mail message"}
-                                   Finish it_ihqkr
+                                   it_aghtl = {success:false, error: "Unable to deliver e-mail message"}
+                                   Finish it_aghtl
                               // OTP input form
                               userOtpUi = RRF "otp.ftlh" uiFeedback
                               // When passcode entered by user matches
@@ -61,7 +61,7 @@ Repeat 6 times max
                                    Log "@info User registration failed. Error : %" E
                               Otherwise
                                    // OTP does not match
-                                   uiFeedBack.errorMessage = "OTP doesn't match"
+                                   uiFeedback.errorMessage = "OTP doesn't match"
                          Otherwise
                               // User already registered with UID
                               Log "@info User already registered with uid: %" userName
@@ -86,5 +86,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_enxqc = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_enxqc
+it_zvnzh = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_zvnzh
