@@ -21,9 +21,9 @@
 		  </div>
 		  <span class="text-2xl font-semi-bold leading-normal">Email OTP Form</span>
 		  <!-- Error Message Block -->
-		  [#if error?has_content]
+		  [#if errorMessage?has_content]
 		  <div role="alert" align="center" class="alert alert-danger mt-3 error">
-			<p>${error} 
+			<p>${errorMessage} 
 			</p>
 		  </div>
 		  [/#if]
