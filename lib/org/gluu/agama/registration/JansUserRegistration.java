@@ -4,6 +4,8 @@ import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.EncryptionService;
 import io.jans.as.common.service.common.UserService;
 import io.jans.orm.exception.operation.EntryNotFoundException;
+import io.jans.service.MailService;
+import io.jans.model.SmtpConfiguration;
 import io.jans.service.cdi.util.CdiUtil;
 import io.jans.util.StringHelper;
 
