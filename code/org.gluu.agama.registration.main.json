@@ -79,7 +79,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -1510,7 +1510,7 @@
 						{
 							"variableTypeCheck": true,
 							"assignmentExpression": "\"OTP doesn't match\"",
-							"assignedVariableName": "uiFeedback.errorMessage"
+							"assignedVariableName": "emailObj.errorMessage"
 						}
 					],
 					"nodeIcon": "material-symbols:equal",
@@ -1526,7 +1526,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false,
+			"selected": true,
 			"dragging": false
 		}
 	],
@@ -2246,8 +2246,8 @@
 		}
 	],
 	"viewport": {
-		"x": 1151,
-		"y": 312,
+		"x": -1502,
+		"y": -836,
 		"zoom": 1
 	}
 }
