@@ -40,10 +40,10 @@ Repeat 6 times max
                                    // log for unsuccessful Email delivery
                                    Log "@info Unable to deliver e-mail message"
                                    // Unable to deliver e-mail message
-                                   it_inetk = {success:false, error: "Unable to deliver e-mail message"}
-                                   Finish it_inetk
+                                   it_rmtzw = {success:false, error: "Unable to deliver e-mail message"}
+                                   Finish it_rmtzw
                               // OTP input form
-                              userOtpUi = RRF "otp.ftlh" uiFeedback
+                              userOtpUi = RRF "otp.ftlh" emailObj
                               // When passcode entered by user matches
                               When userOtpUi.passcode is otp
                                    // Call user registration service method to register a new user
@@ -87,5 +87,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_ylcja = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_ylcja
+it_hucgs = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_hucgs
