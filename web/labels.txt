@@ -1,1 +1,7 @@
-hi
+myproject.salutation = hello!
+
+[es]
+myproject.salutation = hola!
+
+[it]
+myproject.salutation = ciao!
