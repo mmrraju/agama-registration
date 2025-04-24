@@ -5,3 +5,7 @@ myproject.salutation = hola!
 
 [it]
 myproject.salutation = ciao!
+
+[en]
+app.title = My App
+
