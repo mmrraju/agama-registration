@@ -9,4 +9,6 @@ myproject.salutation = ciao!
 [en]
 app.title = My App
 login.welcome = Welcome back, {0}!
+login.button = Log In
+
 
