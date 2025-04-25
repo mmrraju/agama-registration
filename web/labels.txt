@@ -1,4 +1,4 @@
-login.button = Registration koro
+login.button = Registration reset koro
 
 myproject.salutation = hello!
 
