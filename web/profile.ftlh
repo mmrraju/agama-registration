@@ -53,7 +53,7 @@
 		  </div>
 		  <div class="form-group">
 			<label class="form-label">Password: <span class="required">*</span></label>
-			<input type="password" id="userPassword" name="userPassword" minlength="6" pattern="^(?=.*[!@#$%^&amp;*])(?=.*[A-Za-z0-9]).{6,}$" required="" placeholder="Choose a strong password" class="form-control" title="Password must be at least 6 characters long and contain at least one special character (!@#$%^&amp;*)">
+			<input type="password" id="userPassword" name="userPassword" minlength="6" pattern="^(?=.*[!@#$%^&amp;*])(?=.*[A-Za-z0-9]).{6,}$" required="" placeholder="Choose a strong password" title="Password must be at least 6 characters long and contain at least one special character (!@#$%^&amp;*)" class="form-control">
 		  </div>
 		  <div class="form-group">
 			<label class="form-label">Repeat Password: <span class="required">*</span></label>
@@ -63,7 +63,7 @@
 		  </div>
 		  <div class="buttons">
 			<button type="submit" class="btn btn-primary">Register</button>
-			<button type="reset" id="cancel" name="cancel" value="cancel" class="btn btn-primary">Reset</button>
+			<button type="reset" id="cancel" name="cancel" value="cancel" class="btn btn-primary">${labels("login.button")}</button>
 		  </div>
 		</form>
 	  </div>
