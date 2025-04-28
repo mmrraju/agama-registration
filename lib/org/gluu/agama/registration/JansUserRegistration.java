@@ -18,6 +18,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.regex.Pattern;
+import io.jans.agama.engine.service.LabelsService;
 
 import org.gluu.agama.EmailTemplate;
 
@@ -128,12 +129,18 @@ public class JansUserRegistration extends UserRegistration {
 
     public String sendEmail(String to) {
 
+        LabelsService lbls = CdiUtil.bean(LabelsService.class);
+        
+
         SmtpConfiguration smtpConfiguration = getSmtpConfiguration();
         IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
         String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
+        String subject = lbls.get("mail.subjectTemplate", otp);
+        String textBody = lbls.get("mail.msgTemplateText", otp);
+
         String from = smtpConfiguration.getFromEmailAddress();
-        String subject = String.format(SUBJECT_TEMPLATE, otp);
-        String textBody = String.format(MSG_TEMPLATE_TEXT, otp);
+        // String subject = String.format(SUBJECT_TEMPLATE, otp);
+        // String textBody = String.format(MSG_TEMPLATE_TEXT, otp);
         String htmlBody = EmailTemplate.get(otp);
 
         MailService mailService = CdiUtil.bean(MailService.class);
