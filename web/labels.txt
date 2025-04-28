@@ -1,16 +1,7 @@
-login.button = Registration reset koro
-
-myproject.salutation = hello!
-
-[es]
-myproject.salutation = hola!
-
-[it]
-myproject.salutation = ciao!
-
 [en]
 app.title = My App
 login.welcome = Welcome back, {0}!
 login.button = Log In
-
+mail.subjectTemplate = Here's your verification code: {0}
+mail.msgTemplateText = 
 
