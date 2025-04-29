@@ -2,11 +2,17 @@ package org.gluu.agama;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import io.jans.agama.engine.service.LabelsService;
+import io.jans.service.cdi.util.CdiUtil;
 
 
 class EmailTemplate {
     
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY, HH:mma (O)");
+    String templateMsgOne = lbls.get("mail.templateMsgOne");
+    String templateMsgTwo = lbls.get("mail.templateMsgTwo");
+    String templateMsgThree = lbls.get("mail.templateMsgThree");
+    String templateMsgFour = lbls.get("mail.templateMsgFour");
 
     static String get(String otp) {
 
@@ -19,7 +25,7 @@ class EmailTemplate {
         <p>
         <b>Hi,</b>
         <br><br>
-        Enter the 6-digit code below to verify your email address at gluu.org
+        Enter the 6-digit code below to verify your email address at gluu.org ${templateMsgOne} 
         </p>
         <div style="display: flex; justify-content: center">
             <div style="background-color: #b6f6da; color: #0ca65d; font-size: 40px; font-weight: 400; letter-spacing: 6px" align="center">
@@ -27,12 +33,12 @@ class EmailTemplate {
             </div>
         </div>
         <p style="font-size: 14px">
-        If you did not make this request, you can safely ignore this email.
+        If you did not make this request, you can safely ignore this email. ${templateMsgTwo}
         </p>
         <p>
         <br>
-        Thanks for helping us keep your account secure.<br>
-        The Gluu Team
+        Thanks for helping us keep your account secure. ${templateMsgThree}<br> 
+        The Gluu Team. ${templateMsgFour}
         <br><br>
         </p>
     </div>
