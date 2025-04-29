@@ -9,13 +9,13 @@ import io.jans.service.cdi.util.CdiUtil;
 class EmailTemplate {
     
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY, HH:mma (O)");
-    LabelsService lbls = CdiUtil.bean(LabelsService.class);
+
+    static String get(String otp) {
+    LabelsService lbls = CdiUtil.bean(LabelsService);
     static String templateMsgOne = lbls.get("mail.templateMsgOne");
     static String templateMsgTwo = lbls.get("mail.templateMsgTwo");
     static String templateMsgThree = lbls.get("mail.templateMsgThree");
-    static String templateMsgFour = lbls.get("mail.templateMsgFour");
-
-    static String get(String otp) {
+    static String templateMsgFour = lbls.get("mail.templateMsgFour");        
 
         """
 <div style="width: 640px; font-size: 18px; font-family: 'Roboto', sans-serif; font-weight: 300">
