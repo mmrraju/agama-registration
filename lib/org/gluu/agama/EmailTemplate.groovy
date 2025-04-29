@@ -12,10 +12,10 @@ class EmailTemplate {
 
     static String get(String otp) {
     LabelsService lbls = CdiUtil.bean(LabelsService);
-    static String templateMsgOne = lbls.get("mail.templateMsgOne");
-    static String templateMsgTwo = lbls.get("mail.templateMsgTwo");
-    static String templateMsgThree = lbls.get("mail.templateMsgThree");
-    static String templateMsgFour = lbls.get("mail.templateMsgFour");        
+    String templateMsgOne = lbls.get("mail.templateMsgOne");
+    String templateMsgTwo = lbls.get("mail.templateMsgTwo");
+    String templateMsgThree = lbls.get("mail.templateMsgThree");
+    String templateMsgFour = lbls.get("mail.templateMsgFour");        
 
         """
 <div style="width: 640px; font-size: 18px; font-family: 'Roboto', sans-serif; font-weight: 300">
