@@ -26,7 +26,7 @@ class EmailTemplate {
         <p>
         <b>Hi,</b>
         <br><br>
-        Enter the 6-digit code below to verify your email address at gluu.org ${templateMsgOne} 
+        ${templateMsgOne} 
         </p>
         <div style="display: flex; justify-content: center">
             <div style="background-color: #b6f6da; color: #0ca65d; font-size: 40px; font-weight: 400; letter-spacing: 6px" align="center">
@@ -34,12 +34,12 @@ class EmailTemplate {
             </div>
         </div>
         <p style="font-size: 14px">
-        If you did not make this request, you can safely ignore this email. ${templateMsgTwo}
+        ${templateMsgTwo}
         </p>
         <p>
         <br>
-        Thanks for helping us keep your account secure. ${templateMsgThree}<br> 
-        The Gluu Team. ${templateMsgFour}
+        ${templateMsgThree}<br> 
+        ${templateMsgFour}
         <br><br>
         </p>
     </div>
