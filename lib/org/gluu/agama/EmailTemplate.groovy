@@ -9,6 +9,7 @@ import io.jans.service.cdi.util.CdiUtil;
 class EmailTemplate {
     
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY, HH:mma (O)");
+    LabelsService lbls = CdiUtil.bean(LabelsService.class);
     static String templateMsgOne = lbls.get("mail.templateMsgOne");
     static String templateMsgTwo = lbls.get("mail.templateMsgTwo");
     static String templateMsgThree = lbls.get("mail.templateMsgThree");
