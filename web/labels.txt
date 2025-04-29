@@ -1,6 +1,4 @@
 [en]
-login.welcome = Welcome back, {0}!
-login.button = Log In
 mail.subjectTemplate = Here is your verification code: {0}
 mail.msgTemplateText = {0} is the code to complete your verification
 mail.templateMsgOne = Enter the 6-digit code below to verify your email address at gluu.org
