@@ -9,10 +9,10 @@ import io.jans.service.cdi.util.CdiUtil;
 class EmailTemplate {
     
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY, HH:mma (O)");
-    String templateMsgOne = lbls.get("mail.templateMsgOne");
-    String templateMsgTwo = lbls.get("mail.templateMsgTwo");
-    String templateMsgThree = lbls.get("mail.templateMsgThree");
-    String templateMsgFour = lbls.get("mail.templateMsgFour");
+    static String templateMsgOne = lbls.get("mail.templateMsgOne");
+    static String templateMsgTwo = lbls.get("mail.templateMsgTwo");
+    static String templateMsgThree = lbls.get("mail.templateMsgThree");
+    static String templateMsgFour = lbls.get("mail.templateMsgFour");
 
     static String get(String otp) {
 
