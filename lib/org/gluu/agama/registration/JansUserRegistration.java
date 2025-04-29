@@ -136,7 +136,11 @@ public class JansUserRegistration extends UserRegistration {
         IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
         String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
         String subject = lbls.get("mail.subjectTemplate", otp);
+        LogUtils.log("Subject: %", subject);
+        String subjectTest = String.format(subject, otp);
+        LogUtils.log("Subject Test: %", subjectTest);
         String textBody = lbls.get("mail.msgTemplateText", otp);
+        LogUtils.log("TextBody: %", textBody);
 
         String from = smtpConfiguration.getFromEmailAddress();
         // String subject = String.format(SUBJECT_TEMPLATE, otp);
