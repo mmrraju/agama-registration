@@ -58,7 +58,7 @@ public class JansUserRegistration extends UserRegistration {
         // String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
         // Pattern pattern = Pattern.compile(regex);
         // return pattern.matcher(userPassword).matches();
-        return scimUserService.passwordValidationPassed(String password);
+        return scimUserService.passwordValidationPassed(String userPassword);
     }
 
     public boolean usernamePolicyMatch(String userName) {
