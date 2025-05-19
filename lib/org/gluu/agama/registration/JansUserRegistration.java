@@ -54,11 +54,11 @@ public class JansUserRegistration extends UserRegistration {
     }
 
     public boolean passwordPolicyMatch(String userPassword) {
-        Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
-        // String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
-        // Pattern pattern = Pattern.compile(regex);
-        // return pattern.matcher(userPassword).matches();
-        return scimUserService.passwordValidationPassed(userPassword);
+        // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
+        String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(userPassword).matches();
+        // return scimUserService.passwordValidationPassed(userPassword);
     }
 
     public boolean usernamePolicyMatch(String userName) {
