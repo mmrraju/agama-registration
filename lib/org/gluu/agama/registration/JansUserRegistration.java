@@ -207,25 +207,25 @@ public class JansUserRegistration extends UserRegistration {
     public  Map<String, Object> validateInputs(String username, String password, String lang, String referralCode, String residenceCountry) {
         Map<String, Object> result = new HashMap<>();
 
-        if (!Pattern.matches("^(ar|en|es|fr|pt|id)$", lang)) {
+        if (!Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (!Pattern.matches("^[A-Z0-9]{1,16}$", referralCode)) {
+        if (!Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (!Pattern.matches("^[A-Z]{2}$", residenceCountry)) {
+        if (!Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
         }
 
-        if (!Pattern.matches("^[a-zA-Z][a-zA-Z0-9_]{2,19}$", username)) {
+        if (!Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
             result.put("valid", false);
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
