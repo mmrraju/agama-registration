@@ -1549,7 +1549,10 @@
 					"callType": "Call method on instance",
 					"arguments": [
 						"userInput.username",
-						"userInput.userPassword"
+						"userInput.userPassword",
+						"userInput.lang",
+						"userInput.referralCode",
+						"userInput.residenceCountry"
 					],
 					"nodeIcon": "material-symbols:code",
 					"nodeColor": "",
@@ -2362,8 +2365,8 @@
 		}
 	],
 	"viewport": {
-		"x": 331.38947174195926,
-		"y": 164.95054468520766,
-		"zoom": 0.6070974421975232
+		"x": 103,
+		"y": 123,
+		"zoom": 1
 	}
 }
