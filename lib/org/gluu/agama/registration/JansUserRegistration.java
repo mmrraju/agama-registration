@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.regex.Pattern;
 import io.jans.agama.engine.service.LabelsService;
+import io.jans.scim.service.scim2.Scim2UserService;
 
 import org.gluu.agama.EmailTemplate;
 
@@ -54,10 +55,11 @@ public class JansUserRegistration extends UserRegistration {
     }
 
     public boolean passwordPolicyMatch(String userPassword) {
-        // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
+        
         String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
         Pattern pattern = Pattern.compile(regex);
         return pattern.matcher(userPassword).matches();
+        // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
         // return scimUserService.passwordValidationPassed(userPassword);
     }
 
@@ -200,8 +202,8 @@ public class JansUserRegistration extends UserRegistration {
     private static User getUser(String attributeName, String value) {
         UserService userService = CdiUtil.bean(UserService.class);
         return userService.getUserByAttribute(attributeName, value, true);
-    }  
-    
+    }
+
     public  Map<String, Object> validateInputs(String username, String password, String lang, String referralCode, String residenceCountry) {
         Map<String, Object> result = new HashMap<>();
 
@@ -238,7 +240,8 @@ public class JansUserRegistration extends UserRegistration {
         result.put("valid", true);
         result.put("message", "All inputs are valid.");
         return result;
-    }     
+    }  
     
+
 }
 
