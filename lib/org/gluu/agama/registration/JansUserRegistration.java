@@ -203,34 +203,34 @@ public class JansUserRegistration extends UserRegistration {
         return userService.getUserByAttribute(attributeName, value, true);
     }
 
-    public  Map<String, Object> validateInputs(String username, String password, String lang, String referralCode, String residenceCountry) {
+    public  Map<String, Object> validateInputs(String username, String userPassword, String lang, String referralCode, String residenceCountry) {
         LogUtils.log("Validate inputs ");
         Map<String, Object> result = new HashMap<>();
 
-        if (!Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
+        if (username== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
             result.put("valid", false);
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
         }
-        if (!Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', password)) {
+        if (userPassword==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', userPassword)) {
             result.put("valid", false);
             result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
             return result;
         }
 
-        if (!Pattern.matches('''^(ar|en|es|fr|pt|id)$''', "en")) {
+        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', "en")) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (!Pattern.matches('''^[A-Z0-9]{1,16}$''', "A234B")) {
+        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', "A234B")) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (!Pattern.matches('''^[A-Z]{2}$''', "BD")) {
+        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', "BD")) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
