@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.regex.Pattern;
 import io.jans.agama.engine.service.LabelsService;
-import io.jans.scim.service.scim2.Scim2UserService;
 
 import org.gluu.agama.EmailTemplate;
 
