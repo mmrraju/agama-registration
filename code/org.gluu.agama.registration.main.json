@@ -1708,7 +1708,7 @@
 					"assignments": [
 						{
 							"variableTypeCheck": true,
-							"assignmentExpression": "validate.message",
+							"assignmentExpression": "validation.message",
 							"assignedVariableName": "uiFeedback.errorMessage"
 						}
 					],
@@ -2537,8 +2537,8 @@
 		}
 	],
 	"viewport": {
-		"x": -406,
-		"y": 964.125,
+		"x": -6,
+		"y": 893.125,
 		"zoom": 1
 	}
 }
