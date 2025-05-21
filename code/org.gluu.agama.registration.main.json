@@ -903,7 +903,7 @@
 					"x": 903.2633410039799,
 					"y": 314.2487871814564
 				},
-				"previousNodeId": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b",
+				"previousNodeId": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
 				"agamaData": {
 					"javaClassName": "",
 					"javaMethodName": "usernamePolicyMatch",
@@ -1527,6 +1527,47 @@
 			"dragging": false
 		},
 		{
+			"id": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+			"type": "callNode",
+			"position": {
+				"x": 157.07451126642277,
+				"y": 47.157979938704685
+			},
+			"data": {
+				"id": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+				"type": "callNode",
+				"position": {
+					"x": 288.0745112664228,
+					"y": 178.15797993870473
+				},
+				"previousNodeId": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b",
+				"agamaData": {
+					"javaClassName": "",
+					"javaMethodName": "validateInputs",
+					"javaVariableName": "userRegistrationService",
+					"exceptionVariableField": "",
+					"callType": "Call method on instance",
+					"arguments": [
+						"userRegistrationService"
+					],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": "Validate user inputs",
+					"asssignedVariableName": "validation"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": true,
+			"dragging": false
+		},
+		{
 			"id": "assignmentNode-53bad820-8e10-499a-b2f5-f7cae92e929d",
 			"type": "assignmentNode",
 			"position": {
@@ -1563,7 +1604,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		}
 	],
@@ -1925,25 +1966,6 @@
 			"id": "xy-edge__whenNode-95f113c1-0fb1-442d-8d6d-b46a7d751befsource_whenNode-95f113c1-0fb1-442d-8d6d-b46a7d751bef_success-callNode-1e9e2090-3521-421c-b1a9-e8bafc4b306ctarget_callNode-1e9e2090-3521-421c-b1a9-e8bafc4b306c"
 		},
 		{
-			"id": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b-callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4",
-			"type": "default",
-			"source": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b",
-			"target": "callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4",
-			"labelBgPadding": [
-				8,
-				4
-			],
-			"labelBgBorderRadius": 4,
-			"label": "",
-			"labelBgStyle": {
-				"fill": "#009688",
-				"color": "#ffffff",
-				"fillOpacity": 0.7
-			},
-			"labelShowBg": true,
-			"sourceHandle": "source_assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b"
-		},
-		{
 			"id": "callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4-whenNode-195e159f-c372-46d0-9e14-dabbaac215cf",
 			"type": "default",
 			"source": "callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4",
@@ -2298,11 +2320,49 @@
 				"fillOpacity": 0.7
 			},
 			"id": "xy-edge__repeatNode-e4d163b9-80ef-4135-995e-b9d43c85f60bsource_repeatNode-e4d163b9-80ef-4135-995e-b9d43c85f60b_repeat-rrfNode-0874512d-eece-4ead-8d9a-0ef5fb7c9666target_rrfNode-0874512d-eece-4ead-8d9a-0ef5fb7c9666"
+		},
+		{
+			"id": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b-callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+			"type": "default",
+			"source": "assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b",
+			"target": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_assignmentNode-8d132c39-d12f-4d76-9064-d40a74250b0b"
+		},
+		{
+			"id": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d-callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4",
+			"type": "default",
+			"source": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+			"target": "callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4",
+			"label": "",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"sourceHandle": "source_callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
+			"targetHandle": "target_callNode-dd90aa5b-fe63-4265-b610-0c8b30fa1ce4"
 		}
 	],
 	"viewport": {
-		"x": -792.5580292046973,
-		"y": -535.6287335257839,
-		"zoom": 0.7169776240079136
+		"x": 370.53465579721717,
+		"y": 180.35396144965176,
+		"zoom": 0.9999999999999997
 	}
 }
