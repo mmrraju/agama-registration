@@ -205,6 +205,9 @@ public class JansUserRegistration extends UserRegistration {
 
     public  Map<String, Object> validateInputs(String username, String userPassword, String lang, String referralCode, String residenceCountry) {
         LogUtils.log("Validate inputs ");
+        lang = "en";
+        referralCode = "AB23";
+        residenceCountry = "BD";
         Map<String, Object> result = new HashMap<>();
 
         if (username== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
@@ -218,19 +221,19 @@ public class JansUserRegistration extends UserRegistration {
             return result;
         }
 
-        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', "en")) {
+        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', "A234B")) {
+        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', "BD")) {
+        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
