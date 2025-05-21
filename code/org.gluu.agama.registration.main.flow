@@ -18,7 +18,7 @@ Repeat 6 times max
      // Validate user inputs
      validation = Call userRegistrationService validateInputs userInput.username userInput.userPassword userInput.lang userInput.referralCode userInput.residenceCountry
      // Validation result log
-     Log "@info Validation result:  % , % , %" validation, validation.valid, validation.message
+     Log "@info Validation result:  % , % , %" validation validation.valid validation.message
      // Check user name policy
      isUsernamePolicyMatch = Call userRegistrationService usernamePolicyMatch userName
      // if username policy match
@@ -44,8 +44,8 @@ Repeat 6 times max
                                    // log for unsuccessful Email delivery
                                    Log "@info Unable to deliver e-mail message"
                                    // Unable to deliver e-mail message
-                                   it_ldkog = {success:false, error: "Unable to deliver e-mail message"}
-                                   Finish it_ldkog
+                                   it_ohbyf = {success:false, error: "Unable to deliver e-mail message"}
+                                   Finish it_ohbyf
                               // Re-try Matching OTP
                               Repeat 3 times max
                                    // OTP input form
@@ -93,5 +93,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_trbif = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_trbif
+it_elsyc = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_elsyc
