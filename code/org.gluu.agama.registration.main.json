@@ -1587,7 +1587,7 @@
 				},
 				"previousNodeId": "callNode-0cafadeb-e3fe-40be-b5cf-b9f671f7554d",
 				"agamaData": {
-					"logMessage": "\"Validation result:  % , % , %\" validation, validation.valid, validation.message",
+					"logMessage": "\"Validation result:  % , % , %\" validation validation.valid validation.message",
 					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
@@ -1599,8 +1599,8 @@
 				}
 			},
 			"measured": {
-				"width": 170,
-				"height": 124
+				"width": 168,
+				"height": 120
 			},
 			"selected": true,
 			"dragging": false
@@ -2418,8 +2418,8 @@
 		}
 	],
 	"viewport": {
-		"x": 12,
-		"y": 224,
+		"x": 50,
+		"y": 178,
 		"zoom": 1
 	}
 }
