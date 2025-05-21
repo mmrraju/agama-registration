@@ -46,8 +46,8 @@ Repeat 6 times max
                                         // log for unsuccessful Email delivery
                                         Log "@info Unable to deliver e-mail message"
                                         // Unable to deliver e-mail message
-                                        it_bicru = {success:false, error: "Unable to deliver e-mail message"}
-                                        Finish it_bicru
+                                        it_agqxy = {success:false, error: "Unable to deliver e-mail message"}
+                                        Finish it_agqxy
                                    // Re-try Matching OTP
                                    Repeat 3 times max
                                         // OTP input form
@@ -98,5 +98,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_efuqo = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_efuqo
+it_bajdy = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_bajdy
