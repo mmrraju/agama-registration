@@ -7,6 +7,8 @@ import org.gluu.agama.registration.JansUserRegistration;
 
 
 public abstract class UserRegistration {
+    public abstract Map<String, Object> validateInputs(String username, String password, String lang, String referralCode, String residenceCountry);
+
     public abstract String addNewUser(Map<String, String> profile) throws Exception;
 
     public abstract boolean usernamePolicyMatch(String userName);
