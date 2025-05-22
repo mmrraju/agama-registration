@@ -27,6 +27,12 @@ import org.gluu.agama.EmailTemplate;
 
 public class JansUserRegistration extends UserRegistration {
     
+    private static final String SN = "sn";
+    private static final String CONFIRM_PASSWORD = "confirmPassword";
+    private static final String LANG = "lang";
+    private static final String REFERRAL_CODE = "referralCode";
+    private static final String RESIDENCE_COUNTRY = "residenceCountry";
+
     private static final String MAIL = "mail";
     private static final String UID = "uid";
     private static final String DISPLAY_NAME = "displayName";
@@ -203,39 +209,43 @@ public class JansUserRegistration extends UserRegistration {
         return userService.getUserByAttribute(attributeName, value, true);
     }
 
-    public  Map<String, Object> validateInputs(String username, String userPassword, String lang, String referralCode, String residenceCountry) {
+    public  Map<String, Object> validateInputs(Map<String, String> profile) {
         LogUtils.log("Validate inputs ");
         lang = "en";
         referralCode = "AB23";
         residenceCountry = "BD";
         Map<String, Object> result = new HashMap<>();
 
-        if (username== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
+        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
             result.put("valid", false);
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
         }
-        if (userPassword==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', userPassword)) {
+        if (profile.get(USER_PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', userPassword)) {
             result.put("valid", false);
             result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
             return result;
         }
 
-        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
+        if (profile.get(LANG) == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
+        if (profile.get(REFERRAL_CODE) == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
+        if (profile.get(RESIDENCE_COUNTRY) == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
+            return result;
+        }if (profile.get(PASSWORD)!=profile.get(CONFIRM_PASSWORD)){
+            result.put("valid", false);
+            result.put("message", "Password and confirm password not matching");
             return result;
         }
 
