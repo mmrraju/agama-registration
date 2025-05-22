@@ -211,9 +211,6 @@ public class JansUserRegistration extends UserRegistration {
 
     public  Map<String, Object> validateInputs(Map<String, String> profile) {
         LogUtils.log("Validate inputs ");
-        String lang = "en";
-        String referralCode = "AB23";
-        String residenceCountry = "BD";
         Map<String, Object> result = new HashMap<>();
 
         if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', profile.get(UID))) {
