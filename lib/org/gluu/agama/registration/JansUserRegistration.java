@@ -221,7 +221,7 @@ public class JansUserRegistration extends UserRegistration {
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
         }
-        if (profile.get(USER_PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', profile.get(USER_PASSWORD))) {
+        if (profile.get(PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', profile.get(PASSWORD))) {
             result.put("valid", false);
             result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
             return result;
