@@ -59,21 +59,21 @@ public class JansUserRegistration extends UserRegistration {
         return INSTANCE;
     }
 
-    public boolean passwordPolicyMatch(String userPassword) {
+    // public boolean passwordPolicyMatch(String userPassword) {
         
-        String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(userPassword).matches();
-        // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
-        // return scimUserService.passwordValidationPassed(userPassword);
-    }
+    //     String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
+    //     Pattern pattern = Pattern.compile(regex);
+    //     return pattern.matcher(userPassword).matches();
+    //     // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
+    //     // return scimUserService.passwordValidationPassed(userPassword);
+    // }
 
-    public boolean usernamePolicyMatch(String userName) {
-        // Regex: Only alphabets (uppercase and lowercase), minimum 1 character
-        String regex = '''^[A-Za-z]+$''';
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(userName).matches();
-    }
+    // public boolean usernamePolicyMatch(String userName) {
+    //     // Regex: Only alphabets (uppercase and lowercase), minimum 1 character
+    //     String regex = '''^[A-Za-z]+$''';
+    //     Pattern pattern = Pattern.compile(regex);
+    //     return pattern.matcher(userName).matches();
+    // }
 
     public Map<String, String> getUserEntityByMail(String email) {
         User user = getUser(MAIL, email);
