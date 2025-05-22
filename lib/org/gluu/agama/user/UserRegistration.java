@@ -11,9 +11,9 @@ public abstract class UserRegistration {
 
     public abstract String addNewUser(Map<String, String> profile) throws Exception;
 
-    public abstract boolean usernamePolicyMatch(String userName);
+    // public abstract boolean usernamePolicyMatch(String userName);
 
-    public abstract boolean passwordPolicyMatch(String userPassword);
+    // public abstract boolean passwordPolicyMatch(String userPassword);
 
     public abstract String sendEmail(String to);
     
