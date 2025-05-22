@@ -227,19 +227,19 @@ public class JansUserRegistration extends UserRegistration {
             return result;
         }
 
-        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
+        if (profile.get(LANG) == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', profile.get(LANG))) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
+        if (profile.get(REFERRAL_CODE) == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', profile.get(REFERRAL_CODE))) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
+        if (profile.get(RESIDENCE_COUNTRY) == null || !Pattern.matches('''^[A-Z]{2}$''', profile.get(RESIDENCE_COUNTRY))) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
