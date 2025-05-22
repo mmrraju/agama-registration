@@ -211,40 +211,40 @@ public class JansUserRegistration extends UserRegistration {
 
     public  Map<String, Object> validateInputs(Map<String, String> profile) {
         LogUtils.log("Validate inputs ");
-        lang = "en";
-        referralCode = "AB23";
-        residenceCountry = "BD";
+        String lang = "en";
+        String referralCode = "AB23";
+        String residenceCountry = "BD";
         Map<String, Object> result = new HashMap<>();
 
-        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', username)) {
+        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', profile.get(UID))) {
             result.put("valid", false);
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
         }
-        if (profile.get(USER_PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', userPassword)) {
+        if (profile.get(USER_PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', profile.get(USER_PASSWORD))) {
             result.put("valid", false);
             result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
             return result;
         }
 
-        if (profile.get(LANG) == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
+        if (lang == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', lang)) {
             result.put("valid", false);
             result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
             return result;
         }
 
-        if (profile.get(REFERRAL_CODE) == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
+        if (referralCode == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', referralCode)) {
             result.put("valid", false);
             result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
             return result;
         }
 
-        if (profile.get(RESIDENCE_COUNTRY) == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
+        if (residenceCountry == null || !Pattern.matches('''^[A-Z]{2}$''', residenceCountry)) {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
         }
-        
+
         if (!profile.get(PASSWORD).equals(profile.get(CONFIRM_PASSWORD))) {
             result.put("valid", false);
             result.put("message", "Password and confirm password do not match");
