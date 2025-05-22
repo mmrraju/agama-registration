@@ -243,9 +243,11 @@ public class JansUserRegistration extends UserRegistration {
             result.put("valid", false);
             result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
             return result;
-        }if (profile.get(PASSWORD)!=profile.get(CONFIRM_PASSWORD)){
+        }
+        
+        if (!profile.get(PASSWORD).equals(profile.get(CONFIRM_PASSWORD))) {
             result.put("valid", false);
-            result.put("message", "Password and confirm password not matching");
+            result.put("message", "Password and confirm password do not match");
             return result;
         }
 
