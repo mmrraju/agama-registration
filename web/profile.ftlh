@@ -63,7 +63,7 @@
 		  </div>
 		  <div class="buttons">
 			<button type="submit" class="btn btn-primary">Register</button>
-			<button type="reset" id="cancel" name="cancel" value="cancel" class="btn btn-primary">${labels("login.button")}</button>
+			<button type="reset" id="cancel" name="cancel" value="cancel" class="btn btn-primary">Reset</button>
 		  </div>
 		</form>
 	  </div>
