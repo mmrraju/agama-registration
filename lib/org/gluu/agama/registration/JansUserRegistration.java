@@ -50,30 +50,6 @@ public class JansUserRegistration extends UserRegistration {
 
     private static JansUserRegistration INSTANCE = null;
     
-    private static final Map<String, Map<String, String>> LANG_LABELS = new HashMap<>();
-
-    static {
-        Map<String, String> en = new HashMap<>();
-        en.put("subject", "Your verification code");
-        en.put("msgText", "{0} is your verification code.");
-        en.put("line1", "Enter the 6-digit code below to verify your email address.");
-        en.put("line2", "If you did not make this request, you can safely ignore this email.");
-        en.put("line3", "Thanks for helping us keep your account secure.");
-        en.put("line4", "Team Phi Wallet");
-
-        Map<String, String> ar = new HashMap<>();
-        ar.put("subject", "رمز التحقق الخاص بك");
-        ar.put("msgText", "{0} هو رمز التحقق الخاص بك.");
-        ar.put("line1", "أدخل الرمز المكون من 6 أرقام أدناه للتحقق من عنوان بريدك الإلكتروني.");
-        ar.put("line2", "إذا لم تقم بطلب ذلك، يمكنك تجاهل هذا البريد الإلكتروني بأمان.");
-        ar.put("line3", "شكرًا لمساعدتنا في الحفاظ على أمان حسابك.");
-        ar.put("line4", "فريق Phi Wallet");
-
-        // Add other languages...
-        LANG_LABELS.put("en", en);
-        LANG_LABELS.put("ar", ar);
-    }    
-
     public JansUserRegistration() {}
 
     public static synchronized JansUserRegistration getInstance()
