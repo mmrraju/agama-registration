@@ -53,27 +53,71 @@ public class JansUserRegistration extends UserRegistration {
         return INSTANCE;
     }
 
-    public boolean passwordPolicyMatch(String userPassword) {
-    // Regex Explanation:
-    // - (?=.*[!-~&&[^ ]]) ensures at least one printable ASCII character except space (also helps exclude space)
-    // - (?=.*[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]) ensures at least one special character
-    // - (?=.*[A-Za-z]) ensures at least one letter
-    // - (?=.*\\d) ensures at least one digit
-    // - [!-~&&[^ ]] limits all characters to printable ASCII excluding space (ASCII 33–126)
-    String regex = '''^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~])[!-~&&[^ ]]{12,24}$''';
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(userPassword).matches();
-    }
+    // public boolean passwordPolicyMatch(String userPassword) {
+    // // Regex Explanation:
+    // // - (?=.*[!-~&&[^ ]]) ensures at least one printable ASCII character except space (also helps exclude space)
+    // // - (?=.*[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]) ensures at least one special character
+    // // - (?=.*[A-Za-z]) ensures at least one letter
+    // // - (?=.*\\d) ensures at least one digit
+    // // - [!-~&&[^ ]] limits all characters to printable ASCII excluding space (ASCII 33–126)
+    // String regex = '''^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~])[!-~&&[^ ]]{12,24}$''';
+    //     Pattern pattern = Pattern.compile(regex);
+    //     return pattern.matcher(userPassword).matches();
+    // }
 
-    public boolean usernamePolicyMatch(String userName) {
-    // Username must:
-    // - Start with an English letter
-    // - Contain only English letters and digits
-    // - Be 6 to 20 characters long
-    String regex = '''^[A-Za-z][A-Za-z0-9]{5,19}$''';
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(userName).matches();
-    }
+    // public boolean usernamePolicyMatch(String userName) {
+    // // Username must:
+    // // - Start with an English letter
+    // // - Contain only English letters and digits
+    // // - Be 6 to 20 characters long
+    // String regex = '''^[A-Za-z][A-Za-z0-9]{5,19}$''';
+    //     Pattern pattern = Pattern.compile(regex);
+    //     return pattern.matcher(userName).matches();
+    // }
+    
+    public  Map<String, Object> validateInputs(Map<String, String> profile) {
+        LogUtils.log("Validate inputs ");
+        Map<String, Object> result = new HashMap<>();
+
+        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', profile.get(UID))) {
+            result.put("valid", false);
+            result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
+            return result;
+        }
+        if (profile.get(PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', profile.get(PASSWORD))) {
+            result.put("valid", false);
+            result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
+            return result;
+        }
+
+        if (profile.get(LANG) == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', profile.get(LANG))) {
+            result.put("valid", false);
+            result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
+            return result;
+        }
+
+        if (profile.get(REFERRAL_CODE) == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', profile.get(REFERRAL_CODE))) {
+            result.put("valid", false);
+            result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
+            return result;
+        }
+
+        if (profile.get(RESIDENCE_COUNTRY) == null || !Pattern.matches('''^[A-Z]{2}$''', profile.get(RESIDENCE_COUNTRY))) {
+            result.put("valid", false);
+            result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
+            return result;
+        }
+
+        if (!profile.get(PASSWORD).equals(profile.get(CONFIRM_PASSWORD))) {
+            result.put("valid", false);
+            result.put("message", "Password and confirm password do not match");
+            return result;
+        }
+
+        result.put("valid", true);
+        result.put("message", "All inputs are valid.");
+        return result;
+    }      
 
     public Map<String, String> getUserEntityByMail(String email) {
         User user = getUser(MAIL, email);
