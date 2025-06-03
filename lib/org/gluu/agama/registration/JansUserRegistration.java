@@ -85,7 +85,7 @@ public class JansUserRegistration extends UserRegistration {
         LogUtils.log("Validate inputs ");
         Map<String, Object> result = new HashMap<>();
 
-        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', profile.get(UID))) {
+        if (profile.get(UID)== null || !Pattern.matches('''^[A-Za-z][A-Za-z0-9]{5,19}$''', profile.get(UID))) {
             result.put("valid", false);
             result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
             return result;
