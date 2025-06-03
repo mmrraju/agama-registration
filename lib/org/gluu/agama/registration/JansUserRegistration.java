@@ -27,6 +27,12 @@ import org.gluu.agama.registration.Labels;
 
 public class JansUserRegistration extends UserRegistration {
     
+    private static final String SN = "sn";
+    private static final String CONFIRM_PASSWORD = "confirmPassword";
+    private static final String LANG = "lang";
+    private static final String REFERRAL_CODE = "referralCode";
+    private static final String RESIDENCE_COUNTRY = "residenceCountry";
+
     private static final String MAIL = "mail";
     private static final String UID = "uid";
     private static final String DISPLAY_NAME = "displayName";
