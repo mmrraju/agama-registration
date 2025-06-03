@@ -164,7 +164,8 @@ public class JansUserRegistration extends UserRegistration {
     }
     
     public String sendEmail(String to, String lang) {
-        Map<String, String> labels = LANG_LABELS.getOrDefault(lang, LANG_LABELS.get("en")); // fallback to English
+        Map<String, Map<String, String>> labelMap = Labels.get();
+        Map<String, String> labels = labelMap.getOrDefault(lang, labelMap.get("en"));
 
 
         // 2) Generate OTP
