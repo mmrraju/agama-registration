@@ -18,7 +18,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.regex.Pattern;
-import io.jans.agama.engine.service.LabelsService;
 
 import org.gluu.agama.EmailTemplate;
 import org.gluu.agama.registration.Labels;
@@ -28,12 +27,6 @@ import org.gluu.agama.registration.Labels;
 
 public class JansUserRegistration extends UserRegistration {
     
-    private static final String SN = "sn";
-    private static final String CONFIRM_PASSWORD = "confirmPassword";
-    private static final String LANG = "lang";
-    private static final String REFERRAL_CODE = "referralCode";
-    private static final String RESIDENCE_COUNTRY = "residenceCountry";
-
     private static final String MAIL = "mail";
     private static final String UID = "uid";
     private static final String DISPLAY_NAME = "displayName";
@@ -49,7 +42,7 @@ public class JansUserRegistration extends UserRegistration {
     private static final SecureRandom RAND = new SecureRandom();
 
     private static JansUserRegistration INSTANCE = null;
-    
+
     public JansUserRegistration() {}
 
     public static synchronized JansUserRegistration getInstance()
@@ -60,21 +53,27 @@ public class JansUserRegistration extends UserRegistration {
         return INSTANCE;
     }
 
-    // public boolean passwordPolicyMatch(String userPassword) {
-        
-    //     String regex = '''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$'''
-    //     Pattern pattern = Pattern.compile(regex);
-    //     return pattern.matcher(userPassword).matches();
-    //     // Scim2UserService scimUserService = CdiUtil.bean(Scim2UserService.class);
-    //     // return scimUserService.passwordValidationPassed(userPassword);
-    // }
+    public boolean passwordPolicyMatch(String userPassword) {
+    // Regex Explanation:
+    // - (?=.*[!-~&&[^ ]]) ensures at least one printable ASCII character except space (also helps exclude space)
+    // - (?=.*[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]) ensures at least one special character
+    // - (?=.*[A-Za-z]) ensures at least one letter
+    // - (?=.*\\d) ensures at least one digit
+    // - [!-~&&[^ ]] limits all characters to printable ASCII excluding space (ASCII 33–126)
+    String regex = '''^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~])[!-~&&[^ ]]{12,24}$''';
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(userPassword).matches();
+    }
 
-    // public boolean usernamePolicyMatch(String userName) {
-    //     // Regex: Only alphabets (uppercase and lowercase), minimum 1 character
-    //     String regex = '''^[A-Za-z]+$''';
-    //     Pattern pattern = Pattern.compile(regex);
-    //     return pattern.matcher(userName).matches();
-    // }
+    public boolean usernamePolicyMatch(String userName) {
+    // Username must:
+    // - Start with an English letter
+    // - Contain only English letters and digits
+    // - Be 6 to 20 characters long
+    String regex = '''^[A-Za-z][A-Za-z0-9]{5,19}$''';
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(userName).matches();
+    }
 
     public Map<String, String> getUserEntityByMail(String email) {
         User user = getUser(MAIL, email);
@@ -137,41 +136,13 @@ public class JansUserRegistration extends UserRegistration {
         return new HashMap<>();
     }
 
-    public String sendEmail(String to) {
-
-        LabelsService lbls = CdiUtil.bean(LabelsService.class);
-        
-
-        SmtpConfiguration smtpConfiguration = getSmtpConfiguration();
-        IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
-        String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
-        String subject = lbls.get("mail.subjectTemplate", otp);
-        String textBody = lbls.get("mail.msgTemplateText", otp);
-        String from = smtpConfiguration.getFromEmailAddress();
-        // String subject = String.format(SUBJECT_TEMPLATE, otp);
-        // String textBody = String.format(MSG_TEMPLATE_TEXT, otp);
-        String htmlBody = EmailTemplate.get(otp);
-
-        MailService mailService = CdiUtil.bean(MailService.class);
-
-        if (mailService.sendMailSigned(from, from, to, null, subject, textBody, htmlBody)) {
-            LogUtils.log("E-mail has been delivered to % with code %", to, otp);
-            return otp;
-        }
-        LogUtils.log("E-mail delivery failed, check jans-auth logs");
-        return null;
-
-    }
-    
     public String sendEmail(String to, String lang) {
         Map<String, String> labels = Labels.LANG_LABELS.getOrDefault(lang, Labels.LANG_LABELS.get("en"));
 
-
-        // 2) Generate OTP
         IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
         String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
 
-        // 3) Fetch each piece of text from the bundle
+        // Fetch each piece of text from the bundle
         String subject = labels.get("subject");
         String msgText = labels.get("msgText").replace("{0}", otp);
         String line1 = labels.get("line1");
@@ -179,15 +150,11 @@ public class JansUserRegistration extends UserRegistration {
         String line3 = labels.get("line3");
         String line4 = labels.get("line4");
 
-        // 6) (Optional) If you have an HTML template that also needs localization,
-        //    you could similarly fetch localized fragments or pass 'lang' into your HTML generator.
-        String htmlBody = EmailTemplate.get(otp, line1, line2, line3, line4);  // Keep as is, or adapt if you need localized HTML.
+        String htmlBody = EmailTemplate.get(otp, line1, line2, line3, line4);
 
-        // 7) Grab the “from” address from your SMTP configuration
         SmtpConfiguration smtpConfiguration = getSmtpConfiguration();
         String from = smtpConfiguration.getFromEmailAddress();
 
-        // 8) Send the email (signed) and return the OTP if successful
         MailService mailService = CdiUtil.bean(MailService.class);
         if (mailService.sendMailSigned(from, from, to, null, subject, msgText, htmlBody)) {
             LogUtils.log("E-mail has been delivered to % with code %", to, otp);
@@ -196,7 +163,7 @@ public class JansUserRegistration extends UserRegistration {
 
         LogUtils.log("E-mail delivery failed, check jans-auth logs");
         return null;
-    }           
+    }    
 
     private SmtpConfiguration getSmtpConfiguration() {
         ConfigurationService configurationService = CdiUtil.bean(ConfigurationService.class);
@@ -208,7 +175,7 @@ public class JansUserRegistration extends UserRegistration {
 
 
     public String addNewUser(Map<String, String> profile) throws Exception {
-        Set<String> attributes = Set.of("uid", "mail", "displayName","givenName", "sn", "userPassword", "lang","referralCode", "residenceCountry");
+        Set<String> attributes = Set.of("uid", "mail", "displayName","givenName", "sn", "userPassword", "lang", "residenceCountry", "referralCode");
         User user = new User();
     
         attributes.forEach(attr -> {
@@ -243,52 +210,6 @@ public class JansUserRegistration extends UserRegistration {
     private static User getUser(String attributeName, String value) {
         UserService userService = CdiUtil.bean(UserService.class);
         return userService.getUserByAttribute(attributeName, value, true);
-    }
-
-    public  Map<String, Object> validateInputs(Map<String, String> profile) {
-        LogUtils.log("Validate inputs ");
-        Map<String, Object> result = new HashMap<>();
-
-        if (profile.get(UID)== null || !Pattern.matches('''^[a-zA-Z][a-zA-Z0-9_]{2,19}$''', profile.get(UID))) {
-            result.put("valid", false);
-            result.put("message", "Invalid username. Must be 3-20 characters, start with a letter, and contain only letters, digits, or underscores.");
-            return result;
-        }
-        if (profile.get(PASSWORD)==null || !Pattern.matches('''^(?=.*[!@#$^&*])[A-Za-z0-9!@#$^&*]{6,}$''', profile.get(PASSWORD))) {
-            result.put("valid", false);
-            result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
-            return result;
-        }
-
-        if (profile.get(LANG) == null || !Pattern.matches('''^(ar|en|es|fr|pt|id)$''', profile.get(LANG))) {
-            result.put("valid", false);
-            result.put("message", "Invalid language code. Must be one of ar, en, es, fr, pt, or id.");
-            return result;
-        }
-
-        if (profile.get(REFERRAL_CODE) == null || !Pattern.matches('''^[A-Z0-9]{1,16}$''', profile.get(REFERRAL_CODE))) {
-            result.put("valid", false);
-            result.put("message", "Invalid referral code. Must be uppercase alphanumeric and 1-16 characters.");
-            return result;
-        }
-
-        if (profile.get(RESIDENCE_COUNTRY) == null || !Pattern.matches('''^[A-Z]{2}$''', profile.get(RESIDENCE_COUNTRY))) {
-            result.put("valid", false);
-            result.put("message", "Invalid residence country. Must be exactly two uppercase letters.");
-            return result;
-        }
-
-        if (!profile.get(PASSWORD).equals(profile.get(CONFIRM_PASSWORD))) {
-            result.put("valid", false);
-            result.put("message", "Password and confirm password do not match");
-            return result;
-        }
-
-        result.put("valid", true);
-        result.put("message", "All inputs are valid.");
-        return result;
-    }  
-    
-
+    }    
 }
 
