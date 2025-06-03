@@ -30,14 +30,14 @@ Repeat 6 times max
                // user not found
                When userWithUid.empty is true
                     // Send OTP to verify user mail
-                    otp = Call userRegistrationService sendEmail email
+                    otp = Call userRegistrationService sendEmail email userInput.lang
                     // if otp is null
                     When otp is null
                          // log for unsuccessful Email delivery
                          Log "@info Unable to deliver e-mail message"
                          // Unable to deliver e-mail message
-                         it_wzwta = {success:false, error: "Unable to deliver e-mail message"}
-                         Finish it_wzwta
+                         it_ftcfc = {success:false, error: "Unable to deliver e-mail message"}
+                         Finish it_ftcfc
                     // Re-try Matching OTP
                     Repeat 3 times max
                          // OTP input form
@@ -77,5 +77,5 @@ Repeat 6 times max
 // Maximum attempt reached
 Log "@info Maximum attempt reached"
 // User Registration flow failed
-it_aucoj = {success:false, error: "User registration flow reached max attempts try later"}
-Finish it_aucoj
+it_hznfx = {success:false, error: "User registration flow reached max attempts try later"}
+Finish it_hznfx
