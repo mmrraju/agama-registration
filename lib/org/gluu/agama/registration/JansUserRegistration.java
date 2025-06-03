@@ -161,6 +161,44 @@ public class JansUserRegistration extends UserRegistration {
         return null;
 
     }
+    
+    public String sendEmail(String to, String lang) {
+        ResourceBundle mailBundle = ResourceBundle.getBundle("messages", new Locale(lang));
+
+        // 2) Generate OTP
+        IntStream digits = RAND.ints(OTP_LENGTH, 0, 10);
+        String otp = digits.mapToObj(i -> "" + i).collect(Collectors.joining());
+
+        // 3) Fetch each piece of text from the bundle
+        String subject       = mailBundle.getString("mail.subjectTemplate");
+        String line0Template = mailBundle.getString("mail.msgTemplateText");
+        String line1         = mailBundle.getString("mail.templateMsgOne");
+        String line2         = mailBundle.getString("mail.templateMsgTwo");
+        String line3         = mailBundle.getString("mail.templateMsgThree");
+        String line4         = mailBundle.getString("mail.templateMsgFour");
+
+        // 4) Replace {0} with the OTP in the “msgTemplateText” line
+        String line0 = line0Template.replace("{0}", otp);
+
+
+        // 6) (Optional) If you have an HTML template that also needs localization,
+        //    you could similarly fetch localized fragments or pass 'lang' into your HTML generator.
+        String htmlBody = EmailTemplate.get(otp, line1, line2, line3, line4);  // Keep as is, or adapt if you need localized HTML.
+
+        // 7) Grab the “from” address from your SMTP configuration
+        SmtpConfiguration smtpConfiguration = getSmtpConfiguration();
+        String from = smtpConfiguration.getFromEmailAddress();
+
+        // 8) Send the email (signed) and return the OTP if successful
+        MailService mailService = CdiUtil.bean(MailService.class);
+        if (mailService.sendMailSigned(from, from, to, null, subject, line0, htmlBody)) {
+            LogUtils.log("E-mail has been delivered to % with code %", to, otp);
+            return otp;
+        }
+
+        LogUtils.log("E-mail delivery failed, check jans-auth logs");
+        return null;
+    }        
 
     private SmtpConfiguration getSmtpConfiguration() {
         ConfigurationService configurationService = CdiUtil.bean(ConfigurationService.class);
