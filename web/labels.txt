@@ -1,3 +1,11 @@
+
+mail.subjectTemplate = رمز التحقق الخاص بك
+mail.msgTemplateText = {0} هو رمز التحقق الخاص بك.
+mail.templateMsgOne = أدخل الرمز المكون من 6 أرقام أدناه للتحقق من عنوان بريدك الإلكتروني.
+mail.templateMsgTwo = إذا لم تقم بطلب ذلك، يمكنك تجاهل هذا البريد الإلكتروني بأمان.
+mail.templateMsgThree = شكرًا لمساعدتنا في الحفاظ على أمان حسابك.
+mail.templateMsgFour = فريق Phi Wallet
+
 [en]
 mail.subjectTemplate = Your verification code
 mail.msgTemplateText = {0} is your verification code.
@@ -6,13 +14,6 @@ mail.templateMsgTwo = If you did not make this request, you can safely ignore th
 mail.templateMsgThree = Thanks for helping us keep your account secure.
 mail.templateMsgFour = Team Phi Wallet
 
-[ar]
-mail.subjectTemplate = رمز التحقق الخاص بك
-mail.msgTemplateText = {0} هو رمز التحقق الخاص بك.
-mail.templateMsgOne = أدخل الرمز المكون من 6 أرقام أدناه للتحقق من عنوان بريدك الإلكتروني.
-mail.templateMsgTwo = إذا لم تقم بطلب ذلك، يمكنك تجاهل هذا البريد الإلكتروني بأمان.
-mail.templateMsgThree = شكرًا لمساعدتنا في الحفاظ على أمان حسابك.
-mail.templateMsgFour = فريق Phi Wallet
 
 [fr]
 mail.subjectTemplate = Votre code de vérification
