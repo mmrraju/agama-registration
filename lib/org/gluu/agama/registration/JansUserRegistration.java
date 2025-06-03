@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 import io.jans.agama.engine.service.LabelsService;
 
 import org.gluu.agama.EmailTemplate;
+import org.gluu.agama.registration.Labels;
 
 
 
