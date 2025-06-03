@@ -92,7 +92,7 @@ public class JansUserRegistration extends UserRegistration {
         }
         if (profile.get(PASSWORD)==null || !Pattern.matches('''^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~])[!-~&&[^ ]]{12,24}$''', profile.get(PASSWORD))) {
             result.put("valid", false);
-            result.put("message", "Invalid password. Must be at least 6 characters with uppercase, lowercase, digit, and special character.");
+            result.put("message", "Invalid password. Must be at least 12 to 24 characters with uppercase, lowercase, digit, and special character.");
             return result;
         }
 
