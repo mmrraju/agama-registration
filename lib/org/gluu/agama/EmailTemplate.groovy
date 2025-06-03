@@ -2,20 +2,12 @@ package org.gluu.agama;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import io.jans.agama.engine.service.LabelsService;
-import io.jans.service.cdi.util.CdiUtil;
-
 
 class EmailTemplate {
     
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY, HH:mma (O)");
 
-    static String get(String otp, String line1, String line2, String line3, String line4) {
-    LabelsService lbls = CdiUtil.bean(LabelsService);
-    String templateMsgOne = lbls.get("mail.templateMsgOne");
-    String templateMsgTwo = lbls.get("mail.templateMsgTwo");
-    String templateMsgThree = lbls.get("mail.templateMsgThree");
-    String templateMsgFour = lbls.get("mail.templateMsgFour");        
+    static String get(String otp, String line1, String line2, String line3, String line4) {     
 
         """
 
